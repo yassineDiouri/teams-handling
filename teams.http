@@ -1,0 +1,14 @@
+GET http://localhost:8080/teams
+Accept: application/json
+
+###
+POST http://localhost:8080/teams
+Content-Type: application/json
+
+{
+  "name": "Telecom 3",
+  "acronym": "TL3"
+}
+
+###
+

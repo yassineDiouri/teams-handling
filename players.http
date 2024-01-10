@@ -1,0 +1,13 @@
+POST http://localhost:8080/transfer
+Content-Type: application/json
+
+{
+  "teamId": "2c7aa7c3-b1bd-425e-86dc-690cc8ac5acd",
+  "playerId": 1
+}
+
+###
+GET http://localhost:8080/transfer?free=false
+
+###
+GET http://localhost:8080/teams
