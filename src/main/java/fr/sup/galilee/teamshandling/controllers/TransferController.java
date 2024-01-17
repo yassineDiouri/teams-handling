@@ -1,9 +1,13 @@
 package fr.sup.galilee.teamshandling.controllers;
 
+import fr.sup.galilee.teamshandling.IdsExistsValidator;
 import fr.sup.galilee.teamshandling.dtos.PlayerDTO;
 import fr.sup.galilee.teamshandling.dtos.TransferPlayer;
 import fr.sup.galilee.teamshandling.services.TransferService;
 import lombok.AllArgsConstructor;
+import org.springframework.validation.DataBinder;
+import org.springframework.validation.Errors;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +18,15 @@ import java.util.List;
 public class TransferController {
 
     private final TransferService transferService;
+    private final IdsExistsValidator idsExistsValidator;
+
+    @InitBinder
+    public void initBinder(DataBinder dataBinder) {
+        if (dataBinder.getTarget() != null && idsExistsValidator.supports(dataBinder.getTarget().getClass())) {
+            dataBinder.addValidators(idsExistsValidator);
+        }
+    }
+
 
     @GetMapping
     public List<PlayerDTO> transfer(@RequestParam(required = false) Boolean free) {
@@ -24,7 +37,7 @@ public class TransferController {
     }
 
     @PostMapping
-    public void transferPlayer(@RequestBody TransferPlayer transferPlayer) {
+    public void transferPlayer(@RequestBody @Validated TransferPlayer transferPlayer, Errors errors) {
         transferService.transferPlayer(transferPlayer);
     }
 }

@@ -1,3 +1,20 @@
+PUT http://localhost:8080/players
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJJRCIsImlzcyI6ImFkbWluIiwic3ViIjoiU3ViamVjdCIsImlhdCI6MTcwNTQ4NTU3NiwiZXhwIjoxNzA1NTcxOTc2LCJyb2xlcyI6IlJPTEVfQURNSU4sUk9MRV9VU0VSIn0.8z-WipcT5beXVhi38vMRzjLdIljRcEw3yJZakW_kuAI
+
+{
+  "firstname": "",
+  "lastname": null,
+  "birthdate": "2024-01-17T09:48:43.488+00:00",
+  "position": "MIDFIELD"
+}
+
+###
+GET http://localhost:8080/players
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJJRCIsImlzcyI6ImFkbWluIiwic3ViIjoiU3ViamVjdCIsImlhdCI6MTcwNTQ4NDkyOCwiZXhwIjoxNzA1NTcxMzI4LCJyb2xlcyI6IlJPTEVfQURNSU4sUk9MRV9VU0VSIn0.dcoexatLHUjBkW7AV2Vums4fBoQAtoX9MWc7P3PJhaw
+
+
+###
 POST http://localhost:8080/login
 Content-Type: application/json
 
@@ -11,12 +28,12 @@ POST http://localhost:8080/transfer
 Content-Type: application/json
 
 {
-  "teamId": "2c7aa7c3-b1bd-425e-86dc-690cc8ac5acd",
-  "playerId": 1
+  "teamId": "82c27dea-7ee5-462f-91fb-6e9632c511e9",
+  "playerId": 2
 }
 
 ###
-GET http://localhost:8080/transfer?free=false
+GET http://localhost:8080/transfer?free
 
 ###
 GET http://localhost:8080/teams
